@@ -1,0 +1,61 @@
+
+
+// 점의 사분면 위치 구하기
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+class Solution{
+    public static void main(String[] args){
+
+        // 스캐너로 좌표 입력받기
+        Scanner scanner = new Scanner(System.in);
+        
+        int[] dot = new int[2];
+        
+        System.out.println("점의 x좌표를 입력하세요(0 제외)");
+        dot[0] = notZeroInput(scanner);
+
+        System.out.println("점의 y좌표를 입력하세요(0 제외)");
+        dot[1] = notZeroInput(scanner);
+
+        System.out.println("입력된 점의 좌표 = " + Arrays.toString(dot));
+        
+        Solution sol = new Solution();
+        
+        int quadrant = sol.solution(dot);
+        System.out.println("점의 위치 = "+quadrant+"사분면");
+
+        scanner.close();
+    }
+
+    // 좌표 0 제외
+    public static int notZeroInput(Scanner scanner){
+        int input = Integer.parseInt(scanner.nextLine());
+        
+        while(input==0){
+            System.out.println("0을 제외한 값을 다시 입력하세요");
+            input = Integer.parseInt(scanner.nextLine());
+        }
+
+        return input;
+    }
+
+    // 좌표 사분면 판단
+    public int solution(int[] dot) {
+        int quadrant = 0;
+
+        int xElement = dot[0];
+        int yElement = dot[1];
+        
+        if(xElement>0){
+            quadrant = (yElement>0) ? 1 : 4;
+
+        }else{
+            quadrant = (yElement>0) ? 2 : 3;
+        }
+
+        return quadrant;
+    }
+
+}

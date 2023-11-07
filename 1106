@@ -1,1 +1,29 @@
+// 나머지가 1이 되는 수 찾기
 
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("자연수 n을 입력하세요");
+        int n = Integer.parseInt(sc.nextLine());
+        
+        int x = solution(n);
+
+        System.out.println("n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x는 : "+ x);
+        sc.close();
+    }
+
+    public static int solution(int n) {
+        int answer = 0;
+
+        for(int x=2; x<n; x++){
+            if(n%x==1) {
+                answer=x; 
+                break;
+            }
+        }
+
+        return answer;
+    }
+}

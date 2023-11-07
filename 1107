@@ -1,0 +1,29 @@
+// 정수 n을 입력받아 n의 약수를 모두 더한 값을 리턴하는 함수, solution을 완성해주세요.
+
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("자연수 n을 입력하세요");
+        int n = Integer.parseInt(sc.nextLine());
+        
+        int sumDiv = solution(n);
+
+        System.out.println("n의 약수를 모두 더한 값은 : " + sumDiv);
+        sc.close();
+    }
+
+    public static int solution(int n) {
+        int sumDiv = 0;
+        int div = 1;      
+
+            while(div<=n){
+                if(n%div==0){
+                    sumDiv+=div;
+                }
+                div++;
+            }
+        return sumDiv;
+    }
+}

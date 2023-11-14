@@ -1,1 +1,30 @@
-test
+// 자릿수 더하기
+// 자연수 N이 주어지면, N의 각 자릿수의 합을 구해서 return 하는 solution 함수를 만들어 주세요. 
+
+import java.util.Scanner;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("자연수 N를 입력하세요.");
+        int N = Integer.parseInt(sc.nextLine());
+        
+        int answer = solution(N);
+
+        System.out.println("자연수 N의 자릿수를 모두 더한결과는 : " + answer);
+        sc.close();
+    }
+
+    public static int solution(int N) {
+        int sum = 0;
+        String num = String.valueOf(N);
+
+        // 자연수 n의 각 자릿수 더하기
+        for(int i=0; i<num.length(); i++){
+            sum += (int)num.charAt(i)-'0';
+        }
+
+        return sum;
+    }
+}

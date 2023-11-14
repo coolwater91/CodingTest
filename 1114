@@ -1,0 +1,31 @@
+// 정수 내림차순으로 배치하기
+// n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요.
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Scanner;
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("양의 정수 n를 입력하세요.");
+        long n = Integer.parseInt(sc.nextLine());
+        
+        long answer = solution(n);
+
+        System.out.println("n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴 : " + answer);
+        sc.close();
+    }
+
+    public static long solution(long n) {
+
+        String[] strNums = String.valueOf(n).split("");
+        Arrays.sort(strNums);
+
+        StringBuilder sb = new StringBuilder();
+        for(String strNum : strNums) sb.append(strNum);
+                
+        return Long.parseLong(sb.reverse().toString());
+    }
+    
+}

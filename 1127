@@ -1,0 +1,75 @@
+/* 나누어 떨어지는 숫자 배열  https://school.programmers.co.kr/learn/courses/30/lessons/12910
+
+array의 각 element 중 divisor로 나누어 떨어지는 값을 오름차순으로 정렬한 배열을 반환하는 함수, solution을 작성해주세요.
+divisor로 나누어 떨어지는 element가 하나도 없다면 배열에 -1을 담아 반환하세요.
+
+<제한 조건>
+arr은 자연수를 담은 배열입니다.
+정수 i, j에 대해 i ≠ j 이면 arr[i] ≠ arr[j] 입니다.
+divisor는 자연수입니다.
+array는 길이 1 이상인 배열입니다.
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("자연수 배열 arr의 크기를 입력하세요");
+        int size = Integer.parseInt(sc.nextLine());
+        
+        int[] arr  = new int[size];
+
+        System.out.println("배열의 각 요소를 입력하세요");
+        for(int i=0; i<size; i++){
+            arr[i] = Integer.parseInt(sc.nextLine());
+        }
+
+        System.out.println("divisor을 입력하세요");
+        int divisor = Integer.parseInt(sc.nextLine());
+
+        System.out.println("입력받은 배열 arr : " + Arrays.toString(arr) );
+        System.out.println("입력받은 divisor : " + divisor);
+        
+        int[] answer = solution(arr,divisor);
+
+        System.out.println(answer);
+
+        sc.close();
+    }
+
+    public static int[] solution(int[] arr, int divisor) {
+        // 나누어 떨어지는 개수를 세기위한 변수
+        int count=0;
+
+        // 나누어 떨어지는 개수 확인
+        for(int i=0; i<arr.length; i++){
+            if(arr[i]%divisor==0) {
+                count++;
+            }
+        }
+
+        // 나누어 떨어지는 개수가 없을경우
+        if(count==0){
+            int[] answer = new int[]{-1};
+            return answer;
+        }
+
+        // 나누어 떨어지는 요소가 있을경우
+        int[] answer = new int[count];
+        int index = 0;
+
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] % divisor ==0){
+                answer[index] = arr[i]/divisor;
+                index++;
+            }
+        }
+
+        Arrays.sort(answer);
+
+        return answer;
+    }
+}

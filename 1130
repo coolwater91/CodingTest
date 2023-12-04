@@ -1,1 +1,50 @@
-test
+/* 없는 숫자 더하기  https://school.programmers.co.kr/learn/courses/30/lessons/86051
+
+0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. 
+numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.
+
+<제한 조건>
+1 ≤ numbers의 길이 ≤ 9
+0 ≤ numbers의 모든 원소 ≤ 9
+numbers의 모든 원소는 서로 다릅니다.
+*/
+
+import java.util.Scanner;
+import java.util.Arrays;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("정수배열 numbers의 크기를 입력하세요");
+        int size = Integer.parseInt(sc.nextLine());
+        
+        System.out.println("정수배열 numbers의 각 요소를 입력하세요");
+        int[] numbers = new int[size];
+        for(int i=0; i<size; i++){
+            numbers[i] = Integer.parseInt(sc.nextLine());
+        }
+
+        System.out.println("입력받은 정수배열 numbers : " + Arrays.toString(numbers));
+
+        int answer = solution(numbers);
+
+        System.out.println("찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수 : " + answer);
+
+        sc.close();
+    }
+
+    public static int solution(int[] numbers) {
+
+        int answer = -1;
+        int sum = 10/2*(0+9); // 1~9를 더한 총합, 등차수열 합공식 이용
+        
+        for(int i=0; i<numbers.length; i++){
+            sum-=numbers[i];
+        }
+
+        answer=sum;
+
+        return answer;
+    }
+}   

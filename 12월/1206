@@ -1,0 +1,91 @@
+    /* 수박수박수박수박수박수?  https://school.programmers.co.kr/learn/courses/30/lessons/12922
+
+    길이가 n이고, "수박수박수박수...."와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요.
+    예를들어 n이 4이면 "수박수박"을 리턴하고 3이라면 "수박수"를 리턴하면 됩니다.
+
+    <제한 조건>
+    n은 길이 10,000이하인 자연수입니다
+    */
+
+    import java.util.Scanner;
+
+    class Solution {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println(" 수박수박수.. 패턴 문자열 크기 n");
+            int n = Integer.parseInt(sc.nextLine());
+
+            String answer = solution(n);
+
+            System.out.println("수박수박수.. 패턴의 문자열 " + answer);
+            sc.close();
+        }
+
+        public static String solution(int n) {
+            String answer = "";
+            
+            StringBuilder sb = new StringBuilder();
+            
+            for(int i=0; i<n; i++){
+                if(i%2==0) sb.append("수");
+                else sb.append("박");
+            }
+            
+            answer = sb.toString();
+            
+            return answer;
+        }
+    }   
+
+
+
+    /* 약수의 개수와 덧셈  https://school.programmers.co.kr/learn/courses/30/lessons/77884
+
+    두 정수 left와 right가 매개변수로 주어집니다. 
+    left부터 right까지의 모든 수들 중에서, 약수의 개수가 짝수인 수는 더하고, 
+    약수의 개수가 홀수인 수는 뺀 수를 return 하도록 solution 함수를 완성해주세요.
+
+    <제한 조건>
+    1 ≤ left ≤ right ≤ 1,000
+    */
+
+    import java.util.Scanner;
+
+    class Solution {
+        public static void main(String[] args) {
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println(" left right를 차례대로 입력바랍니다");
+            int left = Integer.parseInt(sc.nextLine());
+            int right = Integer.parseInt(sc.nextLine());
+
+            int answer = solution(left, right);
+
+            System.out.println("약수의 개수가 짝수인 수는 더하고, 약수의 개수가 홀수인 수는 뺀 수 " + answer);
+            sc.close();
+        }
+
+        public static int solution(int left, int right) {
+                int answer = 0;
+                
+                for(int i=left; i<=right; i++){
+                    
+                    if(countDivisor(i)%2==0) answer+=i;
+                    else answer-=i;
+                }
+                return answer;
+            }
+            
+        private static int countDivisor(int num){
+            int count= 0;
+                
+            for(int i=1; i<=num; i++){
+            if(num%i==0){
+            count++;
+            }
+            }
+            
+            return count;
+        }
+    }   
